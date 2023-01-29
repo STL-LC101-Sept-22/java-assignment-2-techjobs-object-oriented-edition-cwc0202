@@ -29,7 +29,7 @@ public Job(){
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-// TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
+// DTODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
     @Override
@@ -47,7 +47,17 @@ public Job(){
         return id;
     }
 
-    // DTODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+    @Override
+    public String toString() {
+
+        return "\nID: " + Objects.toString(id, "Data not available") +
+                "\nName: " + Objects.toString(name, "Data not available") +
+                "\nEmployer: " + Objects.toString(employer, "Data not available") +
+                "\nLocation: " + Objects.toString(location, "Data not available") +
+                "\nPosition Type: " + Objects.toString(positionType, "Data not available") +
+                "\nCore Competency" + Objects.toString(coreCompetency, "Data not available") + "\n";
+    }
+// DTODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
     public int getId() {
