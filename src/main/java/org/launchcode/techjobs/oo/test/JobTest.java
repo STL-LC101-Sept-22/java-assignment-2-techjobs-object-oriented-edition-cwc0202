@@ -13,13 +13,13 @@ import static org.junit.Assert.*;
  */
 @RunWith(JUnit4.class)
 public class JobTest {
-    Job testJob;
-    Job testJob2;
-    @Before
-            public void initializeJobs(){
-        testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-    }
+//    Job testJob;
+//    Job testJob2;
+//    @Before
+//            public void initializeJobs(){
+//        testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//        testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+//    }
     @Test
     public void testSettingJobId(){
     Job job1 = new Job();
@@ -28,7 +28,7 @@ public class JobTest {
 }
 @Test
     public void testJobConstructorSetsAllFields(){
-//    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     assertTrue(testJob.getEmployer() instanceof Employer);
     assertTrue(testJob.getName() instanceof String);
     assertTrue(testJob.getLocation() instanceof Location);
@@ -42,20 +42,21 @@ public class JobTest {
 }
 @Test
     public void testJobsForEquality() {
-//    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//    Job testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-    assertNotEquals(testJob2, testJob);
+    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    Job testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    assertFalse(testJob.equals(testJob2));
 }
 @Test
     public void testToStringStartsAndEndsWithNewLine(){
-//    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     assertEquals(testJob.toString().charAt(0), '\n');
     assertEquals(testJob.toString().charAt(testJob.toString().length() - 1), '\n');
 }
 @Test
     public void testToStringContainsCorrectLabelsAndData(){
-//    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+    Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     String str = testJob.toString();
+    assertEquals(testJob.getEmployer().getValue(), "ACME");
     assertTrue(str.contains("ID"));
     assertTrue(str.contains("Name"));
     assertTrue(str.contains("Employer"));
@@ -71,8 +72,9 @@ public class JobTest {
 }
 @Test
     public void testToStringHandlesEmptyField(){
-    testJob.setCoreCompetency(null);
+    Job testJob = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
     String str = testJob.toString();
-    assertTrue(str.contains("Data not available"));
+    assertEquals(testJob.getEmployer().getValue(), "Data not available");
 }
 }

@@ -55,7 +55,7 @@ public Job(){
                 "\nEmployer: " + Objects.toString(employer, "Data not available") +
                 "\nLocation: " + Objects.toString(location, "Data not available") +
                 "\nPosition Type: " + Objects.toString(positionType, "Data not available") +
-                "\nCore Competency" + Objects.toString(coreCompetency, "Data not available") + "\n";
+                "\nCore Competency: " + Objects.toString(coreCompetency, "Data not available") + "\n";
     }
 // DTODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
